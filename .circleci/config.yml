@@ -59,6 +59,10 @@ jobs:
           command: |
             newman run tests/postman/APDS.postman_collection.json \
             -e tests/postman/Development.postman_environment.json \
+            --env-var "SuccessUserLogin=https://localhost:3002/api/auth/login" \
+            --env-var "FailedUserLogin=https://localhost:3002/api/auth/login" \
+            --env-var "SuccessAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
+            --env-var "FailedAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
             --reporters cli,json \
             --reporter-json-export tests/results.json
 
