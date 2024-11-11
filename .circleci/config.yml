@@ -42,6 +42,27 @@ jobs:
           -Dsonar.login="$SONAR_TOKEN" \
           -Dsonar.branch.name="$SONAR_BRANCH" \
           -Dsonar.sources="."
+  test:
+    docker:
+      - image: postman/newman_alpine33  # Newman Docker image
+    steps:
+      - checkout
+
+      - run:
+          name: Install Newman
+          command: npm install -g newman
+
+      - run:
+          name: Run Postman Tests
+          command: |
+            newman run tests/postman/APDS.postman_collection.json \
+            
+            --reporters cli,json \
+            --reporter-json-export tests/results.json
+
+      - store_artifacts:
+          path: tests/results.json
+          destination: postman_results
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
