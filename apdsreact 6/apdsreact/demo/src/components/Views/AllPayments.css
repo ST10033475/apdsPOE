@@ -1,0 +1,131 @@
+/* AllPayments.css */
+
+.allpay-background {
+    background-image: url('https://images.unsplash.com/photo-1512676238588-969b23eaa5dd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    padding: 4%;
+    background-position: center; /* Centers the image */
+    background-attachment: fixed;
+    height: 100vh; /* Ensure it covers the full viewport */
+    width: 100%; /* Ensure it covers the full width */
+}
+
+/* Container for the payments list */
+.allpay-payments-list-container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+h1.allpay-heading {
+  text-align: center;
+  font-size: 3rem;
+  color: #987daa;
+  margin-bottom: 20px;
+}
+
+.allpay-error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Table styles */
+.allpay-payments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.allpay-payments-table th,
+.allpay-payments-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.allpay-payments-table th {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+}
+
+.allpay-payments-table td {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Hover effect on rows */
+.allpay-payments-table tr:hover {
+  background-color: #f2f2f2;
+}
+
+/* Button styling */
+.allpay-button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.allpay-reject-button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f44336;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+.allpay-button:hover {
+  background-color: #45a049;
+}
+
+.allpay-reject-btn {
+  background-color: #f44336;
+}
+
+.allpay-reject-btn:hover {
+  background-color: #e53935;
+}
+
+.allpay-no-payments-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+.allpay-home-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.allpay-home-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 60%;
+}
+
+.allpay-home-container h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}

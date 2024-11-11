@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.payments-background {
+  background-image: url('https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Background image */
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center center; 
+  background-attachment: fixed; 
+  height: 130vh; 
+  width: 100%; 
+  padding:4%
+}
+
+
+
+.payments-table {
+  width: 90%; 
+  border-collapse: collapse;
+  margin: 20px auto; 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}
+
+.payments-table th, .payments-table td {
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  text-align: left; 
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.payments-table th {
+  background-color: #477f4b; 
+  color: white; 
+}
+
+.payments-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.payments-table tr:hover {
+  background-color: rgba(226, 226, 226, 0.8); 
+}
