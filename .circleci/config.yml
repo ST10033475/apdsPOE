@@ -44,7 +44,7 @@ jobs:
           -Dsonar.sources="."
   test:
     docker:
-      - image: postman/newman_alpine33  # This image has Newman pre-installed
+      - image: postman/newman_alpine33  
     steps:
       - checkout
       
