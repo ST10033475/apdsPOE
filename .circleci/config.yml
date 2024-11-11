@@ -89,43 +89,35 @@ jobs:
           -Dsonar.sources="."
   test:
     docker:
-      - image: postman/newman_alpine33  
+      - image: circleci/node:16  # Use Node.js Docker image
+
     steps:
       - checkout
       
       - run:
-          name: Start Server
-          command: |
-            npm install
-            npm start &
-            sleep 5  # Wait for the server to start up
+          name: Install dependencies
+          command: npm install
+
       - run:
-          name: Run Postman Tests
+          name: Start React app
+          command: npm start &
+
+      - run:
+          name: Wait for React app to be ready
           command: |
-            newman run tests/postman/APDS.postman_collection.json \
-            -e tests/postman/Development.postman_environment.json \
-            --env-var "SuccessUserLogin=https://localhost:3002/api/auth/login" \
-            --env-var "FailedUserLogin=https://localhost:3002/api/auth/login" \
-            --env-var "SuccessAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
-            --env-var "FailedAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
-            --reporters cli,json \
-            --reporter-json-export tests/results.json
+            # Wait for the React app to be up and running
+            until curl --output /dev/null --silent --head --fail http://localhost:3000; do
+              echo "Waiting for React app to start..."
+              sleep 5
+            done
 
-      - store_artifacts:
-          path: tests/results.json
-          destination: postman_results 
+      - run:
+          name: Install Newman
+          command: npm install -g newman
 
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  say-hello-workflow: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - say-hello
-      - sonarqube
-      - test
-
+      - run:
+          name: Run Postman tests
+          command: newman run path/to/your/postman_collection.json
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
