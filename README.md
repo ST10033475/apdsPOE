@@ -22,7 +22,6 @@ This is the **Thyme Bank International Payment System** that allows customers to
 - [Usage](#usage)
   - [Customer Portal Usage](#customer-portal-usage)
   - [Employee Portal Usage](#employee-portal-usage)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Security Considerations](#security-considerations)
 - [References](references)
