@@ -217,24 +217,7 @@ npm start
 
 ---
 
-## Roadmap
 
-### v1.0
-- [x] Login & Registration
-- [x] API
-- [x] Security Protocols
-
-### v1.1
-- [ ] Implement 2FA (Two-Factor Authentication) for customer and employee logins
-- [ ] Introduce a multi-currency converter for customers
-
-### v2.0
-- [ ] Mobile-friendly interface for both portals
-- [ ] Real-time transaction tracking and notification system
-- [ ] Expanded support for alternative payment methods (e.g., cryptocurrency integration)
-- [ ] Integration with additional third-party payment gateways
-
----
 
 ## Contributing
 
