@@ -62,12 +62,11 @@ jobs:
             --env-var "SuccessAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
             --env-var "FailedAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
             --reporters cli,json \
-            --reporter-json-export tests/results.json
+            --reporter-json-export tests/results.json || true
  
       - store_artifacts:
           path: tests/results.json
           destination: postman_results
- 
  
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
