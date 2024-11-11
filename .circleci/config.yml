@@ -58,7 +58,7 @@ jobs:
           name: Run Postman Tests
           command: |
             newman run tests/postman/APDS.postman_collection.json \
-            -e tests/postman/development.postman_environment.json \
+            -e tests/postman/Development.postman_environment.json \
             --reporters cli,json \
             --reporter-json-export tests/results.json
 
