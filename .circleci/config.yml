@@ -58,6 +58,7 @@ jobs:
           name: Run Postman Tests
           command: |
             newman run tests/postman/APDS.postman_collection.json \
+            --env-var "baseUrl=https://127.0.0.1:3002" \
             --reporters cli,json \
             --reporter-json-export tests/results.json
 
