@@ -16,7 +16,7 @@
 							"pm.test(\"Login Successful\", () => {\r",
 							"  const responseJson = pm.response.json();\r",
 							"  pm.expect(responseJson.message).to.eql(\"Login successful\");\r",
-							"  \r",
+							" \r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -29,7 +29,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"testuserNai\",\r\n  \"accountNumber\": \"123456749\",\r\n  \"password\": \"password124\"\r\n}",
+					"raw": "{\"accountNumber\":\"123456749\",\r\n        \"username\":\"testuserNai\",\r\n       \"password\":\" password124\",\r\n       \"captchaToken\": \"null\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,16 +37,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:3002/api/auth/login",
-					"protocol": "https",
+					"raw": "{{SuccessUserLogin}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"api",
-						"auth",
-						"login"
+						"{{SuccessUserLogin}}"
 					]
 				}
 			},
@@ -83,16 +76,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:3002/api/auth/login",
-					"protocol": "https",
+					"raw": "{{FailedUserLogin}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"api",
-						"auth",
-						"login"
+						"{{FailedUserLogin}}"
 					]
 				}
 			},
@@ -127,17 +113,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:3002/api/admin/auth/admin-login",
-					"protocol": "https",
+					"raw": "{{SuccessAdminLogin}}",
 					"host": [
-						"localhost"
-					],
-					"port": "3002",
-					"path": [
-						"api",
-						"admin",
-						"auth",
-						"admin-login"
+						"{{SuccessAdminLogin}}"
 					]
 				}
 			},
