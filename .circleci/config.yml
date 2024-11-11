@@ -1,7 +1,7 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
-
+ 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/jobs-steps/#jobs-overview & https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -12,7 +12,7 @@ jobs:
       # Specify the version you desire here
       # See: https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:current
-
+ 
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
     steps:
@@ -21,7 +21,6 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-          
   sonarqube:
     working_directory: ~/build
     docker:
@@ -43,38 +42,33 @@ jobs:
           -Dsonar.branch.name="$SONAR_BRANCH" \
           -Dsonar.sources="."
   test:
-  
     docker:
-      - image: circleci/node:16  # Use Node.js Docker image
-    working_directory: ./apdsreact\6/apdsreact/demo/package.json 
+      - image: postman/newman_alpine33  
     steps:
       - checkout
-      
       - run:
-          name: Install dependencies
-          command: npm install
-
-      - run:
-          name: Start React app
-          command: npm start &
-
-      - run:
-          name: Wait for React app to be ready
+          name: Start Server
           command: |
-            # Wait for the React app to be up and running
-            until curl --output /dev/null --silent --head --fail http://localhost:3002; do
-              echo "Waiting for React app to start..."
-              sleep 5
-            done
-
+            npm install
+            npm start &
+            sleep 5  # Wait for the server to start up
       - run:
-          name: Install Newman
-          command: npm install -g newman
-
-      - run:
-          name: Run Postman tests
-          command: newman run path/to/your/postman_collection.json
-
+          name: Run Postman Tests
+          command: |
+            newman run tests/postman/APDS.postman_collection.json \
+            -e tests/postman/Development.postman_environment.json \
+            --env-var "SuccessUserLogin=https://localhost:3002/api/auth/login" \
+            --env-var "FailedUserLogin=https://localhost:3002/api/auth/login" \
+            --env-var "SuccessAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
+            --env-var "FailedAdminLogin=https://localhost:3002/api/admin/auth/admin-login" \
+            --reporters cli,json \
+            --reporter-json-export tests/results.json
+ 
+      - store_artifacts:
+          path: tests/results.json
+          destination: postman_results
+ 
+ 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
