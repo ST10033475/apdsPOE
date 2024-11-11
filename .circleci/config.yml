@@ -42,7 +42,7 @@ jobs:
           -Dsonar.login="$SONAR_TOKEN" \
           -Dsonar.branch.name="$SONAR_BRANCH" \
           -Dsonar.sources="."
-    test:
+  test:
     docker:
       - image: postman/newman_alpine33  
     steps:
