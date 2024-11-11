@@ -46,8 +46,7 @@ jobs:
   
     docker:
       - image: circleci/node:16  # Use Node.js Docker image
-    working_directory: ~/apdsreact 6
-/apdsreact/
+    working_directory: ~/apdsreact 6/apdsreact/
     steps:
       - checkout
       
