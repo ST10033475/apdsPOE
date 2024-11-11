@@ -64,7 +64,7 @@ jobs:
             done
       - run:
           name: Run Newman Tests
-          command: newman run path/to/your-collection.json
+          command: newman run test/postman/APDS.postman_collection.json
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
