@@ -44,20 +44,27 @@ jobs:
           -Dsonar.sources="."
   test:
     docker:
-      - image: postman/newman_alpine33  
+      - image: circleci/node:latest  # Or the appropriate image for your project
     steps:
       - checkout
-      
       - run:
-          name: Run Postman Tests
+          name: Install Dependencies
+          command: npm install   # Or any command to install dependencies
+      - run:
+          name: Start Server
           command: |
-            newman run tests/postman/APDS.postman_collection.json \
-            --reporters cli,json \
-            --reporter-json-export tests/results.json
-
-      - store_artifacts:
-          path: tests/results.json
-          destination: postman_results
+            nohup npm start &    # Starts the server in the background
+            sleep 10             # Waits 10 seconds for the server to start
+      - run:
+          name: Wait for Server
+          command: |
+            until curl -s http://127.0.0.1:3002 > /dev/null; do
+              echo "Waiting for server to start..."
+              sleep 2
+            done
+      - run:
+          name: Run Newman Tests
+          command: newman run path/to/your-collection.json
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
