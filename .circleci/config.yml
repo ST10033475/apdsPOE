@@ -71,3 +71,4 @@ workflows:
     jobs:
       - say-hello
       - sonarqube
+      - test
