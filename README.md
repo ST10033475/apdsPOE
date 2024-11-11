@@ -271,7 +271,7 @@ Watch our demo video to see Thyme Bank in action:
 </div>
 
 
-<a href="https://www.youtube.com/watch?v=N8jWx4ui780&feature=youtu.be" target="_blank">
+<a href="https://youtu.be/NIveQA5pGWg" target="_blank">
   <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Icon">
 </a>
 <p>
